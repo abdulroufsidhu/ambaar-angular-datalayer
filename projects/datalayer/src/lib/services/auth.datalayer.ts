@@ -27,7 +27,7 @@ export const getUser = () => {
   return JSON.parse(u) as User;
 };
 
-export class AuthDatalayer {
+export default class AuthDatalayer {
   BASE_URL = "http://localhost:8080/";
   httpClient: HttpClient = inject(HttpClient);
 
