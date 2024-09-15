@@ -272,7 +272,7 @@ export interface Branch extends BaseTable {
   business?: Business;
 }
 
-export default interface Employee extends BaseTable {
+export interface Employee extends BaseTable {
   designation?: string;
   user?: User;
   branch?: Branch;
