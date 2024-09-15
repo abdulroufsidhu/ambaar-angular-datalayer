@@ -1,7 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { LoginReq } from "../models/core-req-models";
-import { LoginRes, User } from "../models/core-res-models";
 import { AuthDatalayer } from "./auth.datalayer";
 
 @Injectable({
