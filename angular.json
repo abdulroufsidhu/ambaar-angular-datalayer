@@ -5,21 +5,21 @@
   "projects": {
     "datalayer": {
       "projectType": "library",
-      "root": "projects/datalayer",
-      "sourceRoot": "projects/datalayer/src",
+      "root": "projects/orgolink-datalayer",
+      "sourceRoot": "projects/orgolink-datalayer/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/datalayer/ng-package.json"
+            "project": "projects/orgolink-datalayer/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/datalayer/tsconfig.lib.prod.json"
+              "tsConfig": "projects/orgolink-datalayer/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/datalayer/tsconfig.lib.json"
+              "tsConfig": "projects/orgolink-datalayer/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,11 +27,8 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/datalayer/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "tsConfig": "projects/orgolink-datalayer/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }

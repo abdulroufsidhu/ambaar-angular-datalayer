@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { LoginRes, User } from "../models/core-res-models";
+import { LoginRes, User } from "../../models/core-res-models";
 import { Observable } from "rxjs";
-import { LoginReq } from "../models/core-req-models";
+import { LoginReq } from "../../models/core-req-models";
 
 enum SessionStorageKeys {
   TOKEN,
