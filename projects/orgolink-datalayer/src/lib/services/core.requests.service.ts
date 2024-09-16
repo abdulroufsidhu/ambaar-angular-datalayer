@@ -4,16 +4,6 @@ import { LoginRes, User } from "../models/core-res-models";
 import { Observable } from "rxjs";
 import { LoginReq } from "../models/core-req-models";
 
-@Injectable({
-  providedIn: "root",
-})
-export class CoreDatalayer {
-  private BASE_URL = "http://localhost:8080/";
-  httpClient: HttpClient = inject(HttpClient);
-
-  public authDataLayer: AuthDatalayer = new AuthDatalayer();
-}
-
 ////////////////// Auth DataLayer Start //////////////////
 
 enum SessionStorageKeys {
@@ -83,3 +73,13 @@ class AuthDatalayer {
 }
 
 ////////////////// Auth DataLayer End ////////////////////
+
+@Injectable({
+  providedIn: "root",
+})
+export class CoreDatalayer {
+  private BASE_URL = "http://localhost:8080/";
+  httpClient: HttpClient = inject(HttpClient);
+
+  public authDataLayer: AuthDatalayer = new AuthDatalayer();
+}
