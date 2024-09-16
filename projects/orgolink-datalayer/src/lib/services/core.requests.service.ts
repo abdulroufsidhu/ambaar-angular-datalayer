@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, provideHttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { LoginRes, User } from "../models/core-res-models";
 import { Observable } from "rxjs";
@@ -31,9 +31,10 @@ export const getUser = () => {
 
 class AuthDatalayer {
   BASE_URL = "http://localhost:8080/";
-  httpClient: HttpClient = inject(HttpClient);
+  private httpClient: HttpClient;
 
-  constructor(base_url?: string) {
+  constructor(httpClient: HttpClient, base_url?: string) {
+    this.httpClient = httpClient;
     if (!!base_url) this.BASE_URL = base_url;
   }
 
@@ -79,7 +80,11 @@ class AuthDatalayer {
 })
 export class CoreDatalayer {
   private BASE_URL = "http://localhost:8080/";
-  httpClient: HttpClient = inject(HttpClient);
+  private httpClient: HttpClient;
+  public authDataLayer: AuthDatalayer;
 
-  public authDataLayer: AuthDatalayer = new AuthDatalayer();
+  constructor(httpClient: HttpClient) {
+    this.httpClient = httpClient;
+    this.authDataLayer = new AuthDatalayer(httpClient);
+  }
 }
