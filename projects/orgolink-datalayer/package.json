@@ -1,6 +1,6 @@
 {
-  "name": "orgolink-datalayer",
-  "version": "0.0.7",
+  "name": "ngx-orgolink-datalayer",
+  "version": "0.0.8",
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0"
