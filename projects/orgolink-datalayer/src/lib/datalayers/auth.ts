@@ -1,11 +1,7 @@
-import { HttpClient, provideHttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
-import { LoginRes, User } from "../models/core-res-models";
+import { HttpClient } from "@angular/common/http";
+import { LoginRes, User, LoginReq } from "../models/core-models";
 import { Observable } from "rxjs";
-import { LoginReq } from "../models/core-req-models";
-
-////////////////// Auth DataLayer Start //////////////////
-
+import { inject } from "@angular/core";
 enum SessionStorageKeys {
   TOKEN,
   USER,
@@ -29,30 +25,24 @@ export const getUser = () => {
   return JSON.parse(u) as User;
 };
 
-class AuthDatalayer {
-  BASE_URL = "http://localhost:8080/";
-  private httpClient: HttpClient;
+export class AuthDatalayer {
+  private BASE_URL = "http://localhost:8080/";
+  private httpClient: HttpClient = inject(HttpClient);
 
-  constructor(httpClient: HttpClient, base_url?: string) {
-    this.httpClient = httpClient;
+  constructor(base_url?: string) {
     if (!!base_url) this.BASE_URL = base_url;
   }
 
   login(request: LoginReq): Observable<LoginRes> {
-    const loginResponse = this.httpClient.post<LoginRes>(
+    return this.httpClient.post<LoginRes>(
       `${this.BASE_URL}/api/users/login`,
       request,
       {},
     );
-    loginResponse.subscribe((value) => {
-      setToken(value.token);
-      setUser(value.user);
-    });
-    return loginResponse;
   }
 
   signup(request: User) {
-    return this.httpClient.post(
+    return this.httpClient.post<LoginRes>(
       `${this.BASE_URL}/api/users/sign-up`,
       request,
       {},
@@ -70,21 +60,5 @@ class AuthDatalayer {
         },
       },
     );
-  }
-}
-
-////////////////// Auth DataLayer End ////////////////////
-
-@Injectable({
-  providedIn: "root",
-})
-export class CoreDatalayer {
-  private BASE_URL = "http://localhost:8080/";
-  private httpClient: HttpClient;
-  public authDataLayer: AuthDatalayer;
-
-  constructor(httpClient: HttpClient) {
-    this.httpClient = httpClient;
-    this.authDataLayer = new AuthDatalayer(httpClient);
   }
 }
