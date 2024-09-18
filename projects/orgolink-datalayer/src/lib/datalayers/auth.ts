@@ -26,10 +26,10 @@ export const getUser = () => {
 };
 
 export class AuthDatalayer {
-  private BASE_URL = "http://localhost:8080/";
+  private BASE_URL = "http://localhost:8080";
   private httpClient: HttpClient = inject(HttpClient);
 
-  private createFullUrl = (url: string) => `${this.BASE_URL}url`;
+  private createFullUrl = (url: string) => `${this.BASE_URL}${url}`;
 
   constructor(base_url?: string) {
     if (!!base_url) this.BASE_URL = base_url;
