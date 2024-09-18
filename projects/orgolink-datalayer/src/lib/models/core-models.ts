@@ -227,7 +227,7 @@ export interface PhoneNumber extends BaseTable {
 export interface Nationality extends BaseTable {
   number?: string;
   type?: "NIC" | "PASSPORT";
-  country?: keyof Country;
+  country?: typeof Country;
   issue_date?: string;
   expiry_date?: string;
 }
@@ -238,7 +238,7 @@ export interface Address extends BaseTable {
   city: string;
   state: string;
   zip: string;
-  country: keyof Country;
+  country: typeof Country;
 }
 
 export interface Person extends BaseTable {
